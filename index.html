@@ -12,7 +12,7 @@
     <button onclick="sendCommand('shutdown')">PC herunterfahren</button>
 
     <script>
-        const socket = new WebSocket("wss://localhost:10000");
+        const socket = new WebSocket("wss://websocket-py.onrender.com/");
 
         socket.onopen = function (event) {
             console.log("Verbindung hergestellt.");
