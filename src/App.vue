@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 
 
 let socket: WebSocket;
@@ -10,7 +10,7 @@ onMounted(() => {
   socket = new WebSocket("wss://16c2-46-22-26-85.ngrok-free.app");
 
   socket.onopen = function (event) {
-    console.log("Verbindung hergestellt.");
+    console.log("Verbindung hergestellt.", event);
   };
 
   socket.onmessage = function (event) {
