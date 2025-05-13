@@ -5,11 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSocket Steuerung</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <button onclick="sendCommand('open_calc')">Rechner öffnen</button>
-    <button onclick="sendCommand('shutdown')">PC herunterfahren</button>
+    <div class="button-container">
+        <button class="image-button" onclick="sendCommand('open_calc')">
+            <img src="./assets/fl_icon.jpg">
+        </button>
+        <button class="image-button" onclick="sendCommand('shutdown')">
+            <img src="./assets/shutdown.jpg">
+        </button>
+        <button class="image-button" onclick="sendCommand('open_chrome')">
+            <img src="./assets/chrome.png">
+        </button>
+    </div>
 
     <script>
         const socket = new WebSocket("wss://16c2-46-22-26-85.ngrok-free.app");
