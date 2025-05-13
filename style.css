@@ -6,13 +6,15 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; /* Zentriert vertikal */
+  align-items: center;
 }
 
 .center-input-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  top: 50%;
+  left: 50%;
   gap: 15px;
 }
 
@@ -20,22 +22,24 @@ body {
   padding: 12px 20px;
   font-size: 18px;
   border: none;
-  border-radius: 25px;
+  border-radius: 100%;
   outline: none;
   width: 250px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-  background-color: #222;
+  background-color: #04ff00;
   color: white;
 }
 
 .submit-button {
+  margin-top: 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
-  border-radius: 25px;
-  background-color: #393053;
+  border-radius: 100%;
+  background-color: #1f007c;
   color: white;
   cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   transition: background 0.3s ease;
 }
 
