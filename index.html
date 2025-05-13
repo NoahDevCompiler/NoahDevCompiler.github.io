@@ -20,7 +20,7 @@
             <img src="./assets/chrome.png">
         </button>
         <input id="autoclicker-time" type="number" placeholder="Zeit in Sek.">
-        <button class="image-button" onclick="sendAutoClickerCommand()">
+        <button class="image-button" onclick="sendCommand('auto clicker', { time: parseInt(document.getElementById('autoclicker-time').value) || 0 })">
             <img src="./assets/clicker.png">
         </button>
     </div>
@@ -36,16 +36,12 @@
             console.log("Nachricht vom Laptop: ", event.data);
         };
 
-        function sendCommand(command) {
-            socket.send(command);
-        }
-        function sendAutoClickerCommand() {
-            const timeValue = document.getElementById("autoclicker-time").value;
-            const command = {
-                action: "auto clicker",
-                time: parseInt(timeValue)
-            };
-            socket.send(JSON.stringify(command));
+        function sendCommand(action, para = {}) {
+            const emit = {
+                action: action,
+                ... para        
+            }
+            socket.send(JSON.stringify(emit));
         }
 
         socket.onerror = function (error) {
