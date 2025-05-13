@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
+  background: linear-gradient(to right, #635985, #393053, #18122B);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -35,4 +35,23 @@ body {
   transform: scale(1.1);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
   border-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-button img {
+    width: 80px;
+    height: 80px;
+  }
+
+  #autoclicker-time {
+    width: 60%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+  }
 }
