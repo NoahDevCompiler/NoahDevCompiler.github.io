@@ -10,22 +10,11 @@
 
 <body>
     <div class="button-container">
-        <button class="image-button" onclick="sendCommand('open_calc')">
-            <img src="./assets/fl_icon.jpg">
-        </button>
-        <button class="image-button" onclick="sendCommand('shutdown')">
-            <img src="./assets/shutdown.jpg">
-        </button>
-        <button class="image-button" onclick="sendCommand('open_chrome')">
-            <img src="./assets/chrome.png">
-        </button>
-        <input id="autoclicker-time" type="number" placeholder="Zeit in Sek.">
-        <button class="image-button" onclick="sendCommand('auto clicker', { time: parseInt(document.getElementById('autoclicker-time').value) || 0 })">
-            <img src="./assets/clicker.png">
-        </button>
-         <button class="image-button" onclick="sendCommand('lock')">
-            <img src="./assets/lock.jpg" alt="">
-        </button>
+
+        <input class="input-box" id="input-box" type="text">
+        <div id="extra-paras"></div>
+        <button class="submit-button" onclick="handleSubmit()">submit</button>
+
     </div>
 
     <script>
@@ -39,10 +28,30 @@
             console.log("Nachricht vom Laptop: ", event.data);
         };
 
+        function handleSubmit() {
+            const command = document.getElementById('input-box').value.trim().toLowerCase();
+
+            if (command === 'autoclicker') {
+                showTimeInput();
+            } else {
+                sendCommand(command);
+            }
+        }
+        function showTimeInput() {
+            const container = document.getElementById("extra-params");
+
+            if (!document.getElementById("autoclicker-time")) {
+                container.innerHTML = `
+            <input type="number" id="autoclicker-time" placeholder="Zeit in Sekunden">
+            <button onclick="sendCommand("autoclicker", { time: parseInt(document.getElementById('autoclicker-time').value) || 0 })">Start</button>
+        `;
+            }
+        }
+
         function sendCommand(action, para = {}) {
             const emit = {
                 action: action,
-                ... para        
+                ...para
             }
             socket.send(JSON.stringify(emit));
         }
