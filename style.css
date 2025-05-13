@@ -5,6 +5,8 @@ body {
   background: black;
   min-height: 100vh;
   display: flex;
+  top: 50%;
+  left: 50%;
   justify-content: center;
 }
 
