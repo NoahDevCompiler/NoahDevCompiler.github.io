@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import fl_icon from "./assets/fl_icon.png"
+
+
+let socket: WebSocket;
+const calc = "open_calc"
+const shutdown = "shutdown"
 
 onMounted(() => {
-  const socket = new WebSocket("wss://16c2-46-22-26-85.ngrok-free.app");
+  socket = new WebSocket("wss://16c2-46-22-26-85.ngrok-free.app");
 
   socket.onopen = function (event) {
     console.log("Verbindung hergestellt.");
@@ -13,9 +17,6 @@ onMounted(() => {
     console.log("Nachricht vom Laptop: ", event.data);
   };
 
-  function sendCommand(command) {
-    socket.send(command);
-  }
 
   socket.onerror = function (error) {
     console.log("Fehler: ", error);
@@ -25,11 +26,19 @@ onMounted(() => {
     console.log("Verbindung geschlossen.");
   };
 });
+
+function sendCommand(command:string) {
+   if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(command);
+   }    
+  }
 </script>
 
 <template>
   <div>
-    <button><fl_icon/></button>
+    <button @click="sendCommand(calc)"><img src="./assets/fl_icon.jpg"></button>
+    <button @click="sendCommand(shutdown)"><fl_icon /></button>
+    <button @click="sendCommand(calc)"><fl_icon /></button>
   </div>
 </template>
 
