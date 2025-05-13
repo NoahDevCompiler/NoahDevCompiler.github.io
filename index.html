@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="button-container">
+    <div class="center-input-container">
 
         <input class="input-box" id="input-box" type="text">
         <div id="extra-paras"></div>
@@ -42,8 +42,8 @@
 
             if (!document.getElementById("autoclicker-time")) {
                 container.innerHTML = `
-            <input type="number" id="autoclicker-time" placeholder="Zeit in Sekunden">
-            <button onclick="sendCommand("autoclicker", { time: parseInt(document.getElementById('autoclicker-time').value) || 0 })">Start</button>
+            <input type="number" id="autoclicker-time" placeholder="Sekunden">
+            <button onclick='sendCommand("autoclicker", { time: parseInt(document.getElementById("autoclicker-time").value) || 0 })'>Start</button>
         `;
             }
         }
