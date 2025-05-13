@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #635985, #393053, #18122B);
+  background: linear-gradient(to right, #8F87F1, #C68EFD, #FED2E2);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -12,6 +12,7 @@ body {
 .button-container {
   display: flex;
   gap: 30px;
+  flex-wrap: wrap;
 }
 
 .image-button {
